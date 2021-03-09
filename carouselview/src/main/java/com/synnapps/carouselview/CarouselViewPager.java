@@ -58,6 +58,10 @@ public class CarouselViewPager extends ViewPager {
         mScroller.setmScrollDuration(scrollFactor);
     }
 
+    public void setIsScrollEnabled(boolean isScrollEnabled) {
+        mScroller.isScrollEnabled = isScrollEnabled;
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         switch (ev.getAction()) {
