@@ -138,6 +138,14 @@ public class CarouselView extends FrameLayout {
         }
     }
 
+
+    public void setIsScrollEnabled(boolean isScrollEnabled) {
+        containerViewPager.setIsScrollEnabled(isScrollEnabled);
+        if (pageTransformer instanceof CarouselViewPagerTransformer) {
+            ((CarouselViewPagerTransformer)pageTransformer).setIsScrollEnabled(isScrollEnabled);
+        }
+    }
+
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
@@ -217,7 +225,6 @@ public class CarouselView extends FrameLayout {
      */
     public void setPageTransformer(@CarouselViewPagerTransformer.Transformer int transformer) {
         setPageTransformer(new CarouselViewPagerTransformer(transformer));
-
     }
 
     /**

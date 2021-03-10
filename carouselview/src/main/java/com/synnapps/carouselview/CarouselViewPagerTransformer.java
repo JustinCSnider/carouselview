@@ -20,6 +20,8 @@ import java.lang.annotation.RetentionPolicy;
  */
 public class CarouselViewPagerTransformer implements ViewPager.PageTransformer {
 
+    private boolean isScrollEnabled = false;
+
     private final int mTransformType;
 
     /** @hide */
@@ -43,11 +45,17 @@ public class CarouselViewPagerTransformer implements ViewPager.PageTransformer {
     private static final float SCALE_FACTOR_SLIDE = 0.85f;
     private static final float MIN_ALPHA_SLIDE = 0.35f;
 
+    public void setIsScrollEnabled(boolean scrollEnabled) {
+        isScrollEnabled = scrollEnabled;
+    }
+
     @Override
     public void transformPage(View page, float position) {
         final float alpha;
         final float scale;
         final float translationX;
+
+        if (!isScrollEnabled) return;
 
         switch (mTransformType) {
             case FLOW:
